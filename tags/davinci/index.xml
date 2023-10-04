@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Davinci on 老王</title>
+    <link>/tags/davinci/</link>
+    <description>Recent content in Davinci on 老王</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 27 Aug 2022 14:50:52 +0800</lastBuildDate><atom:link href="/tags/davinci/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>达芬奇Davinci Resolve Studio 18.x正式版破解方法</title>
+      <link>/p/%E8%BE%BE%E8%8A%AC%E5%A5%87davinci-resolve-studio-18.x%E6%AD%A3%E5%BC%8F%E7%89%88%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Sat, 27 Aug 2022 14:50:52 +0800</pubDate>
+      
+      <guid>/p/%E8%BE%BE%E8%8A%AC%E5%A5%87davinci-resolve-studio-18.x%E6%AD%A3%E5%BC%8F%E7%89%88%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;官网下载&lt;a href=&#34;http://www.blackmagicdesign.com/cn/products/davinciresolve/&#34;&gt;达芬奇Davinci Resolve Studio 18.0.1正式版&lt;/a&gt;，安装&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;下载&lt;a href=&#34;https://mh-nexus.de/en/hxd/&#34;&gt;HxD Hex编辑器&lt;/a&gt;，安装&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;已管理员身份运行&lt;/strong&gt; HxD，然后在菜单上选择：文件 - 打开 - 达芬奇安装目录（默认的是：&lt;code&gt;&amp;quot;C:\Program Files\Blackmagic Design\DaVinci Resolve\&amp;quot;&lt;/code&gt;）下的Resolve.exe&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在菜单上选择：搜索 - 替换 - 选择&lt;strong&gt;字节序列&lt;/strong&gt;，&lt;/p&gt;
+&lt;p&gt;搜索：&lt;code&gt;40 53 48 83 EC 20 89 51 20 48 8B D9 C6 41 24 00&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code&gt;B0 01 C3 83 EC 20 89 51 20 48 8B D9 C6 41 24 00&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;然后在菜单选择：文件 - 保存，关闭HxD&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;解压&lt;a href=&#34;https://pan.baidu.com/s/1DCl4bDR6Lv-unqvGLfccEA&#34;&gt;DCP_18.0.7z&lt;/a&gt; 提取码：68wp&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制&lt;code&gt;DavP_DCP_18.0.0.14.dll&lt;/code&gt;和&lt;code&gt;Qt5Xml.dll&lt;/code&gt;到达芬奇安装目录（默认的是：&lt;code&gt;&amp;quot;C:\Program Files\Blackmagic Design\DaVinci Resolve\&amp;quot;&lt;/code&gt;）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;完成&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

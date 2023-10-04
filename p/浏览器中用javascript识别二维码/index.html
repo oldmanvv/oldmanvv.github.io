@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="keyword"  content="浏览器中用JavaScript识别二维码-老王的宇宙（PS:这是一个几乎没有CSS的站点）">
+    <meta name="description"  content="浏览器中使用纯JS读取识别二维码内容。可用于上传二维码图时，对二维码内容进行校验，避免上传非法二维码。">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌚</text></svg>">
+    <title>浏览器中用JavaScript识别二维码-老王的宇宙（PS:这是一个几乎没有CSS的站点）</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/tomorrow-night-blue.min.css">
+    <link rel="stylesheet" href="/css/alone.css" />
+
+    
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d2b64b94332edb95313ab7ff3a2b2f56";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+    
+</head>
+<body><header class="homepage-header">
+    <h1>⌚️老王</h1>
+    <span class="subtitle">老王的宇宙（PS:这是一个几乎没有CSS的站点）</span>
+</header>
+<hr />
+&nbsp;&nbsp;<a href="/">🏠首页</a>&nbsp;&nbsp;
+
+|&nbsp;&nbsp;<a class="navbar-item" href="/categories/%E5%85%B3%E4%BA%8E">📁关于</a>&nbsp;&nbsp;
+
+|&nbsp;&nbsp;<a class="navbar-item" href="/categories/%E5%A4%A9%E6%96%87">📁天文</a>&nbsp;&nbsp;
+
+|&nbsp;&nbsp;<a class="navbar-item" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E6%9D%82%E5%BF%97">📁程序员杂志</a>&nbsp;&nbsp;
+
+|&nbsp;&nbsp;<a class="navbar-item" href="/categories/%E8%B5%84%E6%BA%90%E4%B8%8B%E8%BD%BD">📁资源下载</a>&nbsp;&nbsp;
+
+ 
+<hr />
+
+
+<article>
+    <div class="container markdown-body">
+        <h2>📖浏览器中用JavaScript识别二维码</h2>
+        
+
+    
+    
+    
+
+        <hr />
+
+        <p>浏览器中使用纯JS读取识别二维码内容。可用于上传二维码图时，对二维码内容进行校验，避免上传非法二维码。</p>
+<p>使用jsQR对二维码进行识别 <a href="https://github.com/cozmo/jsQR">https://github.com/cozmo/jsQR</a> ，为了更加方便的调用，对浏览器中的<a href="https://github.com/cozmo/jsQR/blob/master/dist/jsQR.js">jsQR</a>稍微有些改动：</p>
+<ul>
+<li>可以传入图片URL、Base64、Blob</li>
+<li>不用传入图片尺寸</li>
+<li>用Promise方式</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 原调用方式需要传入Uint8ClampedArray类型的图片数据，并要知道图片的宽高
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jsQR</span>(<span style="color:#a6e22e">imageData</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>, <span style="color:#a6e22e">options</span><span style="color:#f92672">?</span>);
+
+<span style="color:#75715e">// 修改后直接传入图片URL、Base64、Blob
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">jsQR</span>(<span style="color:#e6db74">&#39;https://xxx/ooo.jpg&#39;</span>).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">success</span>) =&gt; {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">success</span>)
+}, () =&gt; {
+  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;error&#39;</span>)
+})
+
+</code></pre></div><p>如果用在jQuery Uploader中，可以实现上传前检查二维码内容，比如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#upload_alipay&#39;</span>).<span style="color:#a6e22e">fileupload</span>({
+  <span style="color:#a6e22e">add</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">e</span>, <span style="color:#a6e22e">data</span>){
+    <span style="color:#a6e22e">jsQR</span>(<span style="color:#a6e22e">URL</span>.<span style="color:#a6e22e">createObjectURL</span>(<span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">files</span>[<span style="color:#ae81ff">0</span>])).<span style="color:#a6e22e">then</span>((<span style="color:#a6e22e">success</span>) =&gt; {
+      <span style="color:#75715e">// 只允许支付宝二维码
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#e6db74">/^https:\/\/qr\.alipay\.com\//</span>.<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">success</span>.<span style="color:#a6e22e">data</span>)) {
+        <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;请上传正确的支付宝收款二维码&#39;</span>)
+      }<span style="color:#66d9ef">else</span>{
+        <span style="color:#a6e22e">data</span>.<span style="color:#a6e22e">submit</span>()
+      }
+    }, () =&gt; {
+      <span style="color:#a6e22e">alert</span>(<span style="color:#e6db74">&#39;请上传正确的支付宝收款二维码&#39;</span>)
+    })
+  }
+})
+</code></pre></div><p>对jsQR的改动如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// jsQR 函数名改名为 _jsQR
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">_jsQR</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>, <span style="color:#a6e22e">providedOptions</span>) {
+    ...<span style="color:#a6e22e">原jsQR函数体不变</span>...
+}
+
+<span style="color:#75715e">// 重新定义一个jsQR函数
+</span><span style="color:#75715e">// 用canvas读取并转化图片为Uint8ClampedArray类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">jsQR</span>(<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">providedOptions</span>){
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">width</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">height</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">canvas</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;canvas&#39;</span>)
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ctx</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">getContext</span>(<span style="color:#e6db74">&#39;2d&#39;</span>)
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">image</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Image</span>()
+    <span style="color:#75715e">// 允许图片地址跨域
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">crossOrigin</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;anonymous&#39;</span>
+    <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">data</span>
+    <span style="color:#75715e">// 等图片加载完成进行转换
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Promise(<span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">resolve</span>, <span style="color:#a6e22e">reject</span>) {
+        <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">onload</span> <span style="color:#f92672">=</span> () =&gt; {
+            <span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">width</span>
+            <span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">image</span>.<span style="color:#a6e22e">height</span>
+            <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">width</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">width</span>
+            <span style="color:#a6e22e">canvas</span>.<span style="color:#a6e22e">height</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">height</span>
+            <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">drawImage</span>(<span style="color:#a6e22e">image</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>)
+            <span style="color:#75715e">// 图片转成Uint8ClampedArray
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">imageData</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ctx</span>.<span style="color:#a6e22e">getImageData</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>)
+            <span style="color:#75715e">// 调用原jsQR方法
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">_jsQR</span>(<span style="color:#a6e22e">imageData</span>.<span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>, <span style="color:#a6e22e">providedOptions</span>)
+            <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">result</span>){
+                <span style="color:#a6e22e">resolve</span>(<span style="color:#a6e22e">result</span>)
+            }<span style="color:#66d9ef">else</span>{
+                <span style="color:#a6e22e">reject</span>()
+            }
+        }
+    })
+}
+<span style="color:#a6e22e">jsQR</span>.<span style="color:#66d9ef">default</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jsQR</span>;
+<span style="color:#a6e22e">exports</span>.<span style="color:#66d9ef">default</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">jsQR</span>;
+
+</code></pre></div>
+
+        
+
+        <hr>
+        <p>
+            
+                <a href="/p/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%BF%9C%E7%A8%8B%E5%A4%A9%E6%96%87%E5%8F%B0%E5%BB%BA%E5%8F%B0%E7%BB%8F%E5%8E%86%E4%B8%80/" 
+            title="记一次远程天文台建台经历（一）">
+            《记一次远程天文台建台经历（一）》</a>⬅
+            
+            🧰
+            
+            ➡<a href="/p/%E8%BE%BE%E8%8A%AC%E5%A5%87davinci-resolve-studio-18.x%E6%AD%A3%E5%BC%8F%E7%89%88%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/" 
+                    title="达芬奇Davinci Resolve Studio 18.x正式版破解方法">《达芬奇Davinci Resolve Studio 18.x正式版破解方法》</a>
+            
+        </p>
+    </div>
+    </div>
+</article>
+
+<hr />
+&copy; 2022 Powered by <a href="https://gohugo.io" target="_blank">Hugo</a>, Themes <a href="https://github.com/OlddogClock/nocss-hugo" target="_blank">nocss-hugo</a>
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+
+</body>
+</html>
