@@ -1,0 +1,25 @@
+.container img{
+  max-width: 800px;
+  display: block;
+}
+.container p{
+  text-indent: 2em;
+}
+.biliplayer {
+  width: 1000px;
+  height: 550px;
+}
+pre > code {
+  font-family: "Sans Mono", "Consolas", "Courier", monospace;
+  font-size:18px;
+}
+
+@media screen and (max-width: 1000px) {
+  .container img{
+      width: 100%;
+  }
+  .biliplayer {
+      width: 100%;
+      height: 250px;
+  }
+}

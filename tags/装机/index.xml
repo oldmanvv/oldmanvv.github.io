@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>装机 on 老王</title>
+    <link>http://localhost:1313/tags/%E8%A3%85%E6%9C%BA/</link>
+    <description>Recent content in 装机 on 老王</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 31 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E8%A3%85%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的电脑们</title>
+      <link>http://localhost:1313/p/%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E4%BB%AC/</link>
+      <pubDate>Fri, 31 May 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/p/%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E4%BB%AC/</guid>
+      <description>&lt;p&gt;我的战友们，他们也透露着我的无奈&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
