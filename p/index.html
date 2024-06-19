@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title> | 老王</title>
+<meta name="keyword"  content="">
+<meta name="description"  content="ssh: connect to host github.com port 22: Connection timed out
+昨天在使用VsCode向GitHub上传代码时，出现错误：（此前已经使用SSH的方式连接了GitHub仓库）
+ssh: connect to host github.com port 22: Connection timed out Please make sure you have the correct access rights and the repository exists. 首先输入以下命令检查SSH是否能够连接成功（ssh后面有空格）
+ssh -T git@github.com 发现报错： ssh: connect to host github.com port 22: Connection timed out 端口连接超时。 查阅资料后，找到解决办法: 解决方案（亲测有效） 在C盘——用户——你的主机名文件夹中找到.ssh文件夹；（此前配置SSH时会生成该文件夹） 在.ssh文件夹中新建文件 config,不带后缀（可以新建文本文档，去掉.txt后缀） 使用notepad&#43;&#43;（或其他方式）打开config文件，输入以下内容，保存后即可
+Host github.com User YourEmail（你的邮箱） Hostname ssh.github.com PreferredAuthentications publickey IdentityFile ~/.ssh/id_rsa Port 443 再次执行 ssh -T git@github.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌚</text></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+
+      <link rel="stylesheet" href="/css/main.min.a67ddb24174876d946885ac54acad8b1422d5d4e10248adac7d2303b231f800b.css" integrity="sha256-pn3bJBdIdtlGiFrFSsrYsUItXU4QJIrax9IwOyMfgAs=" crossorigin="anonymous">
+
+
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
+
+
+
+</head>
+<body>
+  <header>
+    <header>
+    <h1>⌚️老王</h1>
+    一切从简
+</header>
+<hr />
+&nbsp;&nbsp;<a href="/">🏠首页</a>&nbsp;&nbsp;
+
+|&nbsp;&nbsp;<a class="navbar-item" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E6%9D%82%E8%AE%B0">📁程序员杂记</a>&nbsp;&nbsp;
+
+
+|&nbsp;&nbsp;<a href="" title="⌚关于我" target='_self'>⌚关于我</a>
+ 
+<hr />
+
+
+
+  </header>
+  <main>
+    
+  <h1></h1>
+  
+  <time>0001-01-01</time>
+  
+
+    
+    
+    
+        
+        
+        
+        <hr />
+        <h5>文章目录</h5>
+        
+            
+            
+                
+                    
+                    
+                        <ul class="nav">
+                    
+                    
+                    <li><a href="#for-the-account1">⚓
+                    For the account1
+                    </a></li>
+                    
+                    
+                        </ul>
+                    
+                
+            
+        
+            
+            
+                
+                    
+                    
+                        <ul class="nav">
+                    
+                    
+                    <li><a href="#for-the-account2">⚓
+                    For the account2
+                    </a></li>
+                    
+                    
+                        </ul>
+                    
+                
+            
+        
+            
+            
+                
+                    
+                    
+                        <ul class="nav">
+                    
+                    
+                    <li><a href="#just-for-clone">⚓
+                    Just for clone
+                    </a></li>
+                    
+                    
+                        </ul>
+                    
+                
+            
+        
+    
+
+  <p>ssh: connect to host github.com port 22: Connection timed out</p>
+<p>昨天在使用VsCode向GitHub上传代码时，出现错误：（此前已经使用SSH的方式连接了GitHub仓库）</p>
+<p>ssh: connect to host github.com port 22: Connection timed out
+Please make sure you have the correct access rights
+and the repository exists.
+首先输入以下命令检查SSH是否能够连接成功（ssh后面有空格）</p>
+<p>ssh -T <a href="mailto:git@github.com">git@github.com</a>
+发现报错：
+ssh: connect to host github.com port 22: Connection timed out
+端口连接超时。
+查阅资料后，找到解决办法:
+解决方案（亲测有效）
+在C盘——用户——你的主机名文件夹中找到.ssh文件夹；（此前配置SSH时会生成该文件夹）
+在.ssh文件夹中新建文件 config,不带后缀（可以新建文本文档，去掉.txt后缀）
+使用notepad++（或其他方式）打开config文件，输入以下内容，保存后即可</p>
+<p>Host github.com
+User YourEmail（你的邮箱）
+Hostname ssh.github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa
+Port 443
+再次执行
+ssh -T <a href="mailto:git@github.com">git@github.com</a>
+会出现以下提示，输入yes回车即可
+The authenticity of host &lsquo;[ssh.github.com]:443 ([192.30.255.123]:443)&rsquo; can&rsquo;t be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &lsquo;[ssh.github.com]:443,[192.30.255.123]:443&rsquo; (RSA) to the list of known hosts.
+再次执行ssh -T <a href="mailto:git@github.com">git@github.com</a>，发现验证通过
+Hi Clare! You&rsquo;ve successfully authenticated, but GitHub does not provide shell access.
+完成以上步骤后，再次上传代码到GitHub就不会报错了</p>
+<p>需要注意的是，假如你的电脑上拥有多个github账户，你可能事先修改过ssh的配置文件，你可能会将配置文件修改成这样子。</p>
+<h1 id="for-the-account1">For the account1</h1>
+<p>Host github_account1
+HostName ssh.github.com
+PreferredAuthentications publickey
+Port 443
+User git
+IdentityFile ~/.ssh/id_rsa_account1</p>
+<h1 id="for-the-account2">For the account2</h1>
+<p>Host github_account2
+HostName ssh.github.com
+PreferredAuthentications publickey
+Port 443
+User git
+IdentityFile ~/.ssh/id_rsa_account2
+相比于普通只配置一个账户的用户，多账户用户在设置远程仓库连接时，往往设置成这个样子
+[remote &ldquo;origin&rdquo;]
+url = git@github_account1:account1/my_repo.git
+你将通过配置文件中设置的Host别名github_account1代替github.com访问github，这意味着，如果你想要进行进行git clone操作，也应该通过别名访问，否则无法走443端口。假如你想clone <a href="mailto:git@github.com">git@github.com</a>:torvalds/linux.git，你应该修改为git@你设置的别名:torvalds/linux.git。或者是，额外在配置文件里加上。</p>
+<h1 id="just-for-clone">Just for clone</h1>
+<p>Host github.com
+HostName ssh.github.com
+Port 443
+User git</p>
+
+  
+
+
+  </main>
+  <footer>
+    <hr />
+&copy; 2024 Powered by <a href="https://gohugo.io" target="_blank">Hugo</a>, Themes <a href="https://github.com/OlddogClock/nocss-hugo" target="_blank">nocss-hugo</a>
+<script>hljs.highlightAll();</script>
+
+
+
+</body>
+</html>
+
+  </footer>
+</body>
+</html>

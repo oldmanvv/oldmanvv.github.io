@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.126.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.126.1">
   <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>老王</title>
@@ -11,10 +11,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
-    <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/css/main.min.a67ddb24174876d946885ac54acad8b1422d5d4e10248adac7d2303b231f800b.css" integrity="sha256-pn3bJBdIdtlGiFrFSsrYsUItXU4QJIrax9IwOyMfgAs=" crossorigin="anonymous">
 
 
-      <script src="/js/main.js"></script>
+      <script src="/js/main.23cd0c7d837263b9eaeb96ee2d9ccfa2969daa3fa00fa1c1fe8701a9b87251a1.js" integrity="sha256-I80MfYNyY7nq65buLZzPopadqj&#43;gD6HB/ocBqbhyUaE=" crossorigin="anonymous"></script>
 
 
 
@@ -57,6 +57,15 @@
     <h2><a href="/p/%E5%85%B3%E4%BA%8E%E6%88%91/">关于我</a></h2>
     无名之辈，一无所有
     <a href="/p/%E5%85%B3%E4%BA%8E%E6%88%91/" alt="查看关于《关于我》的内容">更多&gt;</a>
+  
+    <hr />
+    <h2><a href="/p/"></a></h2>
+    ssh: connect to host github.com port 22: Connection timed out
+昨天在使用VsCode向GitHub上传代码时，出现错误：（此前已经使用SSH的方式连接了GitHub仓库）
+ssh: connect to host github.com port 22: Connection timed out Please make sure you have the correct access rights and the repository exists. 首先输入以下命令检查SSH是否能够连接成功（ssh后面有空格）
+ssh -T git@github.com 发现报错： ssh: connect to host github.com port 22: Connection timed out 端口连接超时。 查阅资料后，找到解决办法: 解决方案（亲测有效） 在C盘——用户——你的主机名文件夹中找到.ssh文件夹；（此前配置SSH时会生成该文件夹） 在.ssh文件夹中新建文件 config,不带后缀（可以新建文本文档，去掉.txt后缀） 使用notepad++（或其他方式）打开config文件，输入以下内容，保存后即可
+Host github.com User YourEmail（你的邮箱） Hostname ssh.github.com PreferredAuthentications publickey IdentityFile ~/.ssh/id_rsa Port 443 再次执行 ssh -T git@github.
+    <a href="/p/" alt="查看关于《》的内容">更多&gt;</a>
   
 
   </main>

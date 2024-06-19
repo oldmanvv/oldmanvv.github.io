@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <title>到不了的地方都叫做远方，回不去的地方叫做家乡</title>
@@ -749,7 +749,7 @@
 
 <body>
   <video id="background-video" autoplay loop muted>
-    <source src="bg_2_1.mp4" type="video/mp4">
+    <source src="bg_2_2.mp4" type="video/mp4">
   </video>
   <main>
     <section class="message-404">
@@ -763,7 +763,7 @@
       <h1>404</h1>
       <div class="collage-404-images"></div>
     </section>
-    <button onclick="javascript:dribbble404.fetchAndBuildShots()">换一批</button>
+    
   </main>
   <script>
 
@@ -847,9 +847,10 @@
         setTimeout(function () {
           var a = []
           for (var i = 0; i < 56; i++) {
+            var b = Math.floor(Math.random() * 10) + ".jpg"
             a.push({
-              "img": Math.floor(Math.random() * 10) + ".jpg",
-              "url": ""
+              "img": b,
+              "url": b
             })
           }
           that.shots = a
